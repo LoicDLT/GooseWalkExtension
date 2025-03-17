@@ -1,30 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Goose Options</title>
+    <meta charset="UTF-8">
+    <title>Goose Control Panel</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            padding: 10px;
-            width: 250px;
+            font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 280px;
+            margin: 0;
+            padding: 15px;
+            background-color: #f7f9fc;
+            color: #333;
+            text-align: center;
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
         }
         button {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
             width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        button.spawn {
+            background-color: #4caf50;
+            color: white;
+        }
+        button.clear {
+            background-color: #f44336;
+            color: white;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        select {
+            width: 100%;
+            padding: 6px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        .divider {
+            height: 1px;
+            background-color: #ddd;
+            margin: 15px 0;
+        }
+        #status {
+            text-align: center;
+            font-size: 12px;
+            color: #ff5722;
+            margin-top: 8px;
+            height: 16px;
         }
     </style>
 </head>
 <body>
-<h1>Goose Options</h1>
-<button id="spawnGoose">Spawn Goose</button>
-<button id="clearGoose">Clear All Geese</button>
-<h2>Settings</h2>
+<h1>🦢 Goose Control Panel</h1>
+<button id="spawnGoose" class="spawn">Spawn Goose</button>
+<button id="clearGoose" class="clear">Clear All Geese</button>
+
+<h2>⚙️ Settings</h2>
 <select id="settings">
     <option value="default">Default</option>
-    <!-- Add more settings options here -->
 </select>
+<div id="status"></div>
+
 <script src="popup.js"></script>
 </body>
 </html>
