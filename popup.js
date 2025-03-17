@@ -42,7 +42,11 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     });
   } else {
     const errorMessage = document.getElementById('errorMessage');
-    errorMessage.textContent = 'Cannot execute script on chrome:// URLs';
-    errorMessage.style.display = 'block';
+    if (errorMessage) {
+      errorMessage.textContent = 'Cannot execute script on chrome:// URLs';
+      errorMessage.style.display = 'block';
+    } else {
+      console.error('Error: errorMessage element not found');
+    }
   }
 });

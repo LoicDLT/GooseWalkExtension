@@ -3,7 +3,6 @@
   "name": "Browser Goose",
   "version": "1.0",
   "permissions": ["activeTab", "scripting", "storage"],
-  "host_permissions": ["<all_urls>"],
   "action": {
     "default_title": "Summon Goose!",
     "default_popup": "popup.html"
@@ -14,5 +13,10 @@
   "web_accessible_resources": [{
     "resources": ["assets/goose.gif", "assets/honk.mp3"],
     "matches": ["<all_urls>"]
-  }]
+  }],
+  "icons": {
+    "16": "assets/icon16.png",
+    "48": "assets/icon48.png",
+    "128": "assets/icon128.png"
+  }
 }
