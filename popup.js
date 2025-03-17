@@ -23,9 +23,12 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 
   if (!url.startsWith('chrome://')) {
     document.getElementById('spawnGoose').addEventListener('click', () => {
-      chrome.scripting.executeScript({
-        target: { tabId: tabId },
-        files: ["goose.js"]
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        const tabId = tabs[0].id;
+        chrome.scripting.executeScript({
+          target: { tabId: tabId },
+          files: ["goose.js"]
+        });
       });
     });
 

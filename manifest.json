@@ -14,11 +14,5 @@
   "web_accessible_resources": [{
     "resources": ["assets/goose.gif", "assets/honk.mp3"],
     "matches": ["<all_urls>"]
-  }],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["goose.js"]
-    }
-  ]
+  }]
 }
