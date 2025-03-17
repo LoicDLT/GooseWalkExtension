@@ -1,3 +1,21 @@
+fetch(chrome.runtime.getURL('settings.json'))
+    .then(response => response.json())
+    .then(settings => {
+      const settingsSelect = document.getElementById('settings');
+      Object.keys(settings).forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+        settingsSelect.appendChild(option);
+      });
+
+      settingsSelect.addEventListener('change', () => {
+        const selectedSetting = settings[settingsSelect.value];
+        chrome.storage.local.set({ gooseSettings: selectedSetting });
+      });
+    })
+    .catch(error => console.error('Error loading settings:', error));
+
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
   const tab = tabs[0];
   const tabId = tab.id;

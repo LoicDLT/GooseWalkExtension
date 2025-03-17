@@ -1,14 +1,20 @@
-(function () {
+chrome.storage.local.get('gooseSettings', (data) => {
+  const settings = data.gooseSettings || {
+    health: 3,
+    baseSpeed: 2,
+    speedIncreaseDuration: 2000
+  };
+
   const gooseUrl = chrome.runtime.getURL("assets/goose.gif");
   const honkSoundUrl = chrome.runtime.getURL("assets/honk.mp3");
 
-  let gooseHealth = 3;
-  const maxHealth = 3;
+  let gooseHealth = settings.health;
+  const maxHealth = settings.health;
   const gooseWidth = 100;
   const gooseHeight = 120;
   let gooseX, gooseY;
-  let normalSpeed = 2;
-  let fastSpeed = 4;
+  let normalSpeed = settings.baseSpeed;
+  let fastSpeed = settings.baseSpeed * 2;
   let currentSpeed = normalSpeed;
   let direction = { x: 1, y: 0 };
 
@@ -65,7 +71,15 @@
   function updateHealthBar() {
     const ratio = gooseHealth / maxHealth;
     healthBarFill.style.width = `${ratio * 100}%`;
-    healthBarFill.style.backgroundColor = ratio > 0.66 ? 'green' : ratio > 0.33 ? 'orange' : 'red';
+    let color;
+    if (ratio > 0.66) {
+      color = 'green';
+    } else if (ratio > 0.33) {
+      color = 'orange';
+    } else {
+      color = 'red';
+    }
+    healthBarFill.style.backgroundColor = color;
   }
 
   function moveGoose() {
@@ -98,7 +112,7 @@
     honk();
     currentSpeed = fastSpeed;
 
-    setTimeout(() => currentSpeed = normalSpeed, 2000);
+    setTimeout(() => currentSpeed = normalSpeed, settings.speedIncreaseDuration);
 
     if (gooseHealth <= 0) {
       gooseContainer.remove();
@@ -117,4 +131,4 @@
   init();
   setInterval(moveGoose, 30);
   setInterval(setRandomDirection, 3000);
-})();
+});

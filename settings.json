@@ -1,0 +1,12 @@
+{
+  "fast": {
+    "health": 3,
+    "baseSpeed": 4,
+    "speedIncreaseDuration": 1000
+  },
+  "strong": {
+    "health": 5,
+    "baseSpeed": 2,
+    "speedIncreaseDuration": 2000
+  }
+}
