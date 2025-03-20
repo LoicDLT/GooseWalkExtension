@@ -48,6 +48,7 @@ chrome.storage.local.get('gooseSettings', (data) => {
     background: '#ccc',
     display: 'none',
     borderRadius: '5px',
+    zIndex: '2147483647',
     overflow: 'hidden',
   });
 
