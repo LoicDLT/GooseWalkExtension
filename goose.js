@@ -5,8 +5,15 @@ chrome.storage.local.get('gooseSettings', (data) => {
     speedIncreaseDuration: 2000
   };
 
-  const gooseUrl = chrome.runtime.getURL("assets/goose.gif");
-  const honkSoundUrl = chrome.runtime.getURL("assets/honk.mp3");
+  const gooseModels = [
+    "assets/goose-models/goose.gif",
+    "assets/goose-models/goose-glasses.gif",
+    "assets/goose-models/goose-russian-hat.gif"
+  ];
+
+  const randomModel = gooseModels[Math.floor(Math.random() * gooseModels.length)];
+  const gooseUrl = chrome.runtime.getURL(randomModel);
+  const honkSoundUrl = chrome.runtime.getURL("assets/hook.mp3");
 
   let gooseHealth = settings.health;
   const maxHealth = settings.health;

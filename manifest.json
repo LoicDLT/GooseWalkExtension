@@ -11,7 +11,13 @@
     "service_worker": "background.js"
   },
   "web_accessible_resources": [{
-    "resources": ["assets/goose.gif", "assets/honk.mp3"],
+    "resources": [
+      "assets/goose-models/goose.gif",
+      "assets/goose-models/goose-glasses.gif",
+      "assets/goose-models/goose-russian-hat.gif",
+      "assets/hook.mp3",
+      "settings.json"
+    ],
     "matches": ["<all_urls>"]
   }],
   "icons": {
